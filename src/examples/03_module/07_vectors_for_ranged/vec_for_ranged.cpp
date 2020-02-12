@@ -1,4 +1,4 @@
-#include "sample_for_ranged.h"
+//#include "sample_for_ranged.h"
 #include<iostream>
 #include<vector>
 
