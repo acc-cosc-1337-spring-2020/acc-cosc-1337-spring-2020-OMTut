@@ -50,9 +50,9 @@ int main()
 	sum_credit_points += get_grade_points(letter_grade)  * credit_hours;
 	sum_credit_hours += credit_hours;
 
-
 	double gpa = calculate_gpa(sum_credit_hours, sum_credit_points);
 	cout << "GPA: " << gpa;
+
 
 	return 0;
 }
