@@ -1,4 +1,6 @@
 //write includes statements
+#include"loops.h"
+#include<iostream>
 
 //write using statements for cin and cout
 
@@ -10,6 +12,7 @@ factorial.  Also, loop continues as long as user wants to.
 */
 int main() 
 {
+	prompt_user();
 
 	return 0;
 }
