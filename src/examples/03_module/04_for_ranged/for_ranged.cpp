@@ -53,3 +53,16 @@ void loop_vector_w_index()
 	}
 }
 
+void loop_string_w_auto_value(std::string &str)
+{
+	for (auto ch : str) {
+		ch = 'z';
+	}
+}
+
+void loop_string_w_auto_ref(std::string &str)
+{
+	for (auto ch : str) {
+		ch = 'z';
+	}
+}
