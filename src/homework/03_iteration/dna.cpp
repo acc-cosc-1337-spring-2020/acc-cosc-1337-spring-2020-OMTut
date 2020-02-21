@@ -2,7 +2,6 @@
 #include <iostream>
 #include<string>
 using std::string;
-//using namespace std;
 
 
 /*
@@ -29,9 +28,6 @@ double get_gc_content(const std::string &dnacontent)
 	std::cout << dnacontent << "\n" << gc_percent << "\n\n";
 	std::cout << "The GC-content of " << dnacontent << " is " << gc_percent << "%.\n\n";
 
-	//std::cout << "\n\nTotal Count of C & G is " << cgcounter << ".\n";
-	//std::cout << "Total character Count is " << totalstrcount << ".\n";
-	//std::cout << "Percentage is " << gc_percent << ".\n";
 	return gc_percent;
 }
 

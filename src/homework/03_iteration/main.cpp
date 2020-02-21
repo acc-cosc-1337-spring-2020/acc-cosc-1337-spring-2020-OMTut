@@ -17,13 +17,6 @@ user enters a y or Y.
 int main() 
 {
 	int MenuChoice;
-	//do
-	//{
-	//cout << "Please choose from the following:\n";
-	//cout << "Press 1 to get GC Content\n";
-	//cout << "Press 2 to get DNC Complement\n";
-	//cout << "Enter your selection: ";
-	//cin >> MenuChoice;
 
 	do
 	{
