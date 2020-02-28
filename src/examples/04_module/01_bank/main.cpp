@@ -1,12 +1,19 @@
 #include "bank_account.h"
 #include <iostream>
+#include <vector>
 
 using std::cout; using std::cin;
 
 int main()
 {
+	std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) };
 
-	BankAccount account(500);
+	for (auto act : accounts)
+	{
+		cout << act.get_balance() << "\n";
+	}
+
+	BankAccount account(500); //creates an instance of BankAccount
 
 	auto balance = account.get_balance();
 	cout << "Balance is: " << account.get_balance() << "\n";
@@ -15,8 +22,15 @@ int main()
 	cout << "Enter deposit amount: ";
 	cin >> amount;
 
-	account.deposit(amount);
-	cout << "Balance is: " << account.get_balance();
+	try {
+		account.deposit(amount);
+		cout << "Balance is: " << account.get_balance();
+	}
+	catch (Invalid e)
+	{
+		cout << e.get_error() << "\n";
+	}
+	
 
 	return 0;
 }
