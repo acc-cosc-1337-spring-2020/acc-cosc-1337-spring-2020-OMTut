@@ -101,9 +101,9 @@ void menu() {
 				cout << "The max value is " << max << "\n\n";
 				cin.ignore();
 
-				cout << "Press 1 to enter another number or Press 2 to exit...\n\n";
+				cout << "Press any key to continue or Press 1 to exit...\n\n";
 				char k = getch();
-				if (k == '2') {
+				if (k == '1') {
 					another = "e";
 				}
 
