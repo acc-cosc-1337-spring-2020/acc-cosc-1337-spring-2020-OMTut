@@ -1,3 +1,7 @@
+#include "vectors.h"
+#include <iostream>
+
+using std::cout; using std::cin;
 /*
 use a vector of int with values 8, 4, 20, 88, 66, 99
 
@@ -9,6 +13,10 @@ Program continues until user decides to exit.
 */
 int main() 
 {
+
+
+	menu();
+
 
 	return 0;
 }

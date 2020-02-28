@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 #include "vectors.h"
+#include <vector>
 
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
@@ -12,29 +13,27 @@ TEST_CASE("Test for get_max_from_vector") {
 	std::vector<int> numbers2{ 15,12,11,99,88 };
 	std::vector<int> numbers3{ 150,120,11,990,88888 };
 
-	get_max_from_vector(numbers);
-	get_max_from_vector(numbers2);
-	get_max_from_vector(numbers3);
-
 	REQUIRE(get_max_from_vector(numbers) == 1000);
 	REQUIRE(get_max_from_vector(numbers2) == 99);
 	REQUIRE(get_max_from_vector(numbers3) == 88888);
 }
 
 TEST_CASE("Test is_prime for prime numbers") {
-	int number1 = 2;
-	int number2 = 4;
-	int number3 = 43;
-	int number4 = 44;
+	
+	REQUIRE(is_prime(2) == true);
+	REQUIRE(is_prime(4) == false);
+	REQUIRE(is_prime(43) == true);
+	REQUIRE(is_prime(44) == false);
+}
 
-	is_prime(number1);
-	is_prime(number2);
-	is_prime(number3);
-	is_prime(number4);
+TEST_CASE("Testing the vector_of_primes") {
+	std::vector<int> expected{ 2, 3, 5, 7 };
+	std::vector<int> result = vector_of_primes(10);
 
-	//REQUIRE(is_prime(number1) == true);
-	REQUIRE(is_prime(number2) == false);
-	REQUIRE(is_prime(number3) == true);
-	REQUIRE(is_prime(number4) == false);
-	REQUIRE(is_prime(number1) == true);
+	REQUIRE(result == expected);
+
+	std::vector<int> expected2{ 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47 };
+	std::vector<int> result2 = vector_of_primes(50);
+
+	REQUIRE(result2 == expected2);
 }

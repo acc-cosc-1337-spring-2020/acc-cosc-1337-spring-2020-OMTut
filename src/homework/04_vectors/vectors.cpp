@@ -1,8 +1,10 @@
 #include "vectors.h"
 #include<algorithm>
+#include<iostream>
 
 using std::vector;
 using std::string;
+using std::cout; using std::cin;
 
 /*
 Write a value return function get_max_from_vector with a const reference 
@@ -40,6 +42,7 @@ bool is_prime(int number)
 	}
 	return true;
 }
+
 /*
 Write a a function named vector_of_primes with an integer parameter
 that given a number returns all the prime numbers up to the number
@@ -53,3 +56,89 @@ Make sure to use the is_prime function to determine if current
 number is prime.
 */
 
+vector<int> vector_of_primes(int prime)
+{
+	vector<int> primes;
+	for (int p =1; p<= prime; p++)
+	{
+		is_prime(p);
+		if (is_prime(p) == true) {
+			primes.push_back(p);
+		}
+	}
+
+	return primes;
+}
+
+//menu function
+void menu() {
+	int MenuChoice;
+	do
+	{
+		cout << "Welcome.\nPress 1 for 'Get Max Vector'.\nPress 2 for 'Get Primes'.\nPress 3 to exit. ";
+		cin >> MenuChoice;
+		if (MenuChoice == 1) //get max
+		{
+			vector<int> provided;
+			string another;
+			cout << "\nEnter a series of numbers to find the max value. Let's get started!\n";
+			do
+			{
+				int num;
+				cout << "Enter a number: ";
+				cin >> num;
+				provided.push_back(num);
+				//int result = get_max_from_vector(provided);
+				cout << "You have entered the following numbers: ";
+				for (int v = 0; v < provided.size(); ++v)
+				{
+					cout << provided[v] << " ";
+				}
+				cout << "\n\n";
+				int max = get_max_from_vector(provided);
+				cout << "The max value is " << max << "\n\n";
+				cout << "Enter e to exit or any key to continue: ";
+				cin >> another;
+				
+
+
+			} while (another != "e");
+
+			//use a vector of int with values 8, 4, 20, 88, 66, 99
+			//vector<int> provided{ 8, 4, 20, 88, 66, 99 };
+			//int result = get_max_from_vector(provided);
+			//cout << "\n\nThe max value is " << result << "\n\n";
+		}
+		
+		else if (MenuChoice == 2) //vector of primes
+		{
+			int number;
+			cout << "\nEnter a number: ";
+			cin >> number;
+			cout << "\n";
+			vector<int> result = vector_of_primes(number);
+			if (result.empty()) {
+				cout << "There are no prime numbers contained within " << number << ".\n\n";
+
+			}
+			else
+			{
+				cout << "The prime numbers contained within " << number << " are: ";
+
+				for (int i = 0; i < result.size(); ++i)
+				{
+					std::cout << result[i] << " ";
+				}
+				cout << "\n\n";
+			}
+		}
+		else if (MenuChoice == 3) {
+			cout << "\n\nThank you. Have a nice day.";
+		}
+		else {
+			cout << "\n\nInvalid Option\n\n";
+		}
+
+	} while (MenuChoice != 3);
+
+}
