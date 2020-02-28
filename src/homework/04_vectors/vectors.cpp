@@ -1,7 +1,6 @@
 #include "vectors.h"
 #include<algorithm>
 #include<iostream>
-#include <conio.h>
 
 using std::vector;
 using std::string;
@@ -86,6 +85,7 @@ void menu() {
 			do
 			{
 				int num;
+
 				cout << "Enter a number: ";
 				cin >> num;
 				provided.push_back(num);
@@ -101,13 +101,13 @@ void menu() {
 				cout << "The max value is " << max << "\n\n";
 				cin.ignore();
 
-				cout << "Press any key to continue or Press 1 to exit...\n\n";
-				char k = getch();
+				cout << "Press ENTER or Press 1 to exit...\n\n";
+				char k = cin.get();
+				
 				if (k == '1') {
 					another = "e";
 				}
-
-
+			
 			} while (another != "e");
 
 			//use a vector of int with values 8, 4, 20, 88, 66, 99
