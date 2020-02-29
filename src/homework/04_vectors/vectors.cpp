@@ -84,11 +84,14 @@ void menu() {
 			cout << "\nEnter a series of numbers to find the max value. Let's get started!\n";
 			do
 			{
-				int num;
+				int num{ -1000 };
 
-				cout << "Enter a number: ";
-				cin >> num;
-				provided.push_back(num);
+				while (num != -1)
+				{
+					cout << "Enter a number or -1 to show max: ";
+					cin >> num;
+					provided.push_back(num);
+				}
 
 				//int result = get_max_from_vector(provided);
 				cout << "You have entered the following numbers: ";
