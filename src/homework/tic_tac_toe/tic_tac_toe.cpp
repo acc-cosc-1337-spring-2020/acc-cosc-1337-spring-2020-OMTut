@@ -5,7 +5,39 @@
 using std::string;
 using std::cin, using std::cout;
 
-//error function
+//class Error
+class Error
+{
+public:
+	//string msg;
+	Error(string msg) //constructor
+	{
+		msg = "Player must be X or O.";
+	}
+
+	string get_message()
+	{
+		return string();
+	}
+
+
+private:
+	string message;
+	message = "Player must be X or O.";
+};
+
+//class TicTacToe
+class TicTacToe
+{
+public:
+
+private:
+	void set_next_player()
+	{
+	}
+};
+
+/*************************************
 string Error(string msg)
 {
 	string playerside;
@@ -14,3 +46,4 @@ string Error(string msg)
 	}
 	return string();
 }
+*************************************/
