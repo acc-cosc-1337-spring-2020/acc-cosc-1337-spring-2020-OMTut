@@ -6,6 +6,10 @@ using std::cout; using std::cin;
 
 int main()
 {
+
+	BankAccount a;
+	cout << a.get_balance();
+
 	std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) };
 
 	for (auto act : accounts)
