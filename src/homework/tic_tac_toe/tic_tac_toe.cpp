@@ -1,49 +1,24 @@
 //cpp
-#include "tic_tac_toe.h";
+#include "tic_tac_toe.h"
 #include <iostream>
 
 using std::string;
-using std::cin, using std::cout;
+using std::cin; using std::cout;
 
-//class Error
-class Error
+//Start Game Function
+void TicTacToe::start_game(string first_player)
 {
-public:
-	//string msg;
-	Error(string msg) //constructor
-	{
-		msg = "Player must be X or O.";
-	}
+	if (first_player == "X") { player = "X"; }
+	else if (first_player == "O") { player = "O"; }
+	else { throw Error("Player must be X or O"); }
 
-	string get_message()
-	{
-		return string();
-	}
-
-
-private:
-	string message;
-	message = "Player must be X or O.";
-};
-
-//class TicTacToe
-class TicTacToe
-{
-public:
-
-private:
-	void set_next_player()
-	{
-	}
-};
-
-/*************************************
-string Error(string msg)
-{
-	string playerside;
-	if (playerside != "X" || playerside != "x" || playerside != "O" || playerside != "o" || ) {
-		cout << "Player must be X or O.";
-	}
-	return string();
 }
-*************************************/
+
+//Mark the Board function
+void TicTacToe::mark_board(int position)
+{
+	if (position < 1 || position > 9) {
+		throw Error("Position must be 1 to 9");
+	}
+}
+

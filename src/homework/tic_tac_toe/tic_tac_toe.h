@@ -2,15 +2,24 @@
 #include <string>
 using std::string;
 
-//Error function
-string Error(string msg);
+//Error class
 
-string get_message();
+class Error {
+public:
+	Error(string msg) : message{ msg } {} //constructor
+	string get_message()const { return message; } //const keeps the function from being amended
+private:
+	string message;
+};
 
-//TicTacToe Public Functions
-void start_game(string first_player);
-void mark_board(int position);
-string get_player()const;
+//TicTacToe Class
+class TicTacToe {
+public:
+	void start_game(string first_player);
+	void mark_board(int position);
+	string get_player()const { return player; } 
 
-//TicTacToe Private Functions
-void set_next_player();
+
+private:
+	string player;
+};
