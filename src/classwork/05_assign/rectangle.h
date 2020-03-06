@@ -11,6 +11,8 @@ public:
 	Rect(int w, int h) : width{ w }, height{ h } {calculate_area(); }
 	int get_area()const { return area; }
 
+	//friend std::ostream& operator<<(std::ostream& out, const Rect& a);
+	friend std::ostream& operator<<(std::ostream& out, const Rect& area);
 private:
 	int width;
 	int height;

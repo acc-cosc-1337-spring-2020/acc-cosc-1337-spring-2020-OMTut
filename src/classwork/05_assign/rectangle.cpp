@@ -14,3 +14,21 @@ void Rect::calculate_area()
 
 
 }
+
+std::ostream & operator<<(std::ostream & out, const Rect & a)
+{
+	out << "Area is: " << a.area;
+	// TODO: insert return statement here
+	return out;
+}
+/*
+std::istream & operator>>(std::istream & in, Rect & b)
+{
+	int amount;
+	std::cout << "Enter amount: ";
+	in >> amount;
+	b.deposit(amount);
+	// TODO: insert return statement here
+	return in;
+}
+*/

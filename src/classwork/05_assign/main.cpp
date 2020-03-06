@@ -23,9 +23,14 @@ int main()
 	for (auto r : rectangles)
 	{
 		totalarea += r.get_area();
-		cout << r.get_area() << "\n";
+		
+		//cout << r.get_area() << "\n";
+		cout << r << "\n";
+		
 	}
 	cout << totalarea;
+
+
 
 	return 0;
 }

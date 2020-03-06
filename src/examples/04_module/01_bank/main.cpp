@@ -18,6 +18,9 @@ int main()
 	}
 
 	BankAccount account(500); //creates an instance of BankAccount
+	cin >> account;
+	cout << account;
+	display_balance(account);
 
 	auto balance = account.get_balance();
 	cout << "Balance is: " << account.get_balance() << "\n";
