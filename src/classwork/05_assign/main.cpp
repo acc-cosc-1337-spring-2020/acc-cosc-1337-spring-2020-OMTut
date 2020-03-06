@@ -24,7 +24,7 @@ int main()
 	{
 		totalarea += r.get_area();
 		
-		//cout << r.get_area() << "\n";
+		
 		cout << r << "\n";
 		
 	}
