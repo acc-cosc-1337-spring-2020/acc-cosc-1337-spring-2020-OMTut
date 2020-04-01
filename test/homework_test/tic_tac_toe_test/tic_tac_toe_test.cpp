@@ -9,7 +9,7 @@ TEST_CASE("Verify Test Configuration", "verification") {
 TEST_CASE("Can't call mark_board before start_game")
 {
 	TicTacToe game;
-	REQUIRE_THROWS_AS(game.mark_board(10), Error);
+	REQUIRE_THROWS_AS(game.mark_board(1), Error);
 
 }
 
@@ -30,13 +30,19 @@ TEST_CASE("Test setting the first player)") {
 	REQUIRE(game.get_player() == "O");
 }
 
-
-/*
-TEST_CASE(" Test BankAccount initial open depost < 25")
-{
-	BankAccount account;
-	REQUIRE(account.get_balance() == 0);
-
-	REQUIRE_THROWS_AS(account.open(24), Invalid);
+TEST_CASE("Test start game with X game flow") {
+	TicTacToe game;
+	game.start_game("X");
+	REQUIRE(game.get_player() == "X");
+	game.mark_board(4);
+	REQUIRE(game.get_player() == "O");
 }
-*/
+
+TEST_CASE("Test start game with O game flow") {
+	TicTacToe game;
+	game.start_game("O");
+	REQUIRE(game.get_player() == "O");
+	game.mark_board(4);
+	REQUIRE(game.get_player() == "X");
+}
+

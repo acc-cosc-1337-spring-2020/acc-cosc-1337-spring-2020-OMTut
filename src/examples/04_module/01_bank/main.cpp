@@ -6,16 +6,19 @@ using std::cout; using std::cin;
 
 int main()
 {
+	CheckingAccount checking{ 100 };
+	CheckingAccount checking(90);
+	
 
-	BankAccount a;
-	cout << a.get_balance();
+	//BankAccount a;
+	//cout << a.get_balance();
 
-	std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) };
+	/*std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) };
 
 	for (auto act : accounts)
 	{
 		cout << act.get_balance() << "\n";
-	}
+	}*/
 
 	BankAccount account(500); //creates an instance of BankAccount
 	cin >> account;
