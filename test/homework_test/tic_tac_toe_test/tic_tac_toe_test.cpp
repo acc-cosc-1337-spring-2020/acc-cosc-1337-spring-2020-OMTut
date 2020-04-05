@@ -6,41 +6,21 @@ TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
-TEST_CASE("Can't call mark_board before start_game")
-{
+TEST_CASE("Test game over") {
 	TicTacToe game;
-	REQUIRE_THROWS_AS(game.mark_board(1), Error);
+	REQUIRE(game.game_over() == false);
 }
 
-TEST_CASE("Test start game accepts only X or O")
-{
-	TicTacToe game;
-	REQUIRE_THROWS_AS(game.start_game("p"), Error);
-}
-
-TEST_CASE("Test setting the first player)") {
+TEST_CASE("Test set first player X)") {
 	TicTacToe game;
 	game.start_game("X");
 	REQUIRE(game.get_player() == "X");
-
-	game.start_game("O");
-	REQUIRE(game.get_player() == "O");
 }
 
-TEST_CASE("Test start game with X game flow") {
-	TicTacToe game;
-	game.start_game("X");
-	REQUIRE(game.get_player() == "X");
-	game.mark_board(4);
-	REQUIRE(game.get_player() == "O");
-}
-
-TEST_CASE("Test start game with O game flow") {
+TEST_CASE("Test set first player O)") {
 	TicTacToe game;
 	game.start_game("O");
 	REQUIRE(game.get_player() == "O");
-	game.mark_board(4);
-	REQUIRE(game.get_player() == "X");
 }
 
 TEST_CASE("Test Mark Position accepts values from 1 to 9 only") {
@@ -65,7 +45,6 @@ TEST_CASE("Test game over if 9 slots are selected") {
 	game.mark_board(9);
 	REQUIRE(game.game_over() == true);
 }
-
 /////////// Test Column Wins ////////////////////////
 TEST_CASE("Test win by first column") {
 	TicTacToe board;
