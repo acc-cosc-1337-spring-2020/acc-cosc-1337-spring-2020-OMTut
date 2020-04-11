@@ -1,10 +1,6 @@
 //cpp
 #include "tic_tac_toe.h"
-#include <iostream>
-#include <vector>
 
-using std::string; using std::vector;
-using std::cin; using std::cout;
 
 //Start Game Function
 void TicTacToe::start_game(string first_player)
@@ -57,20 +53,6 @@ void TicTacToe::mark_board(int position)
 	}
 	set_next_player();
 
-}
-
-//Display Board function
-void TicTacToe::display_board() const
-{
-
-	for (int i{ 0 }; i < pegs.size(); ++i)
-	{
-		cout << "|" << pegs[i];
-		if (i == 2 || i == 5 || i == 8)
-		{
-			cout << "|\n";
-		}
-	}
 }
 
 /************** Check Winners ************************/
@@ -174,4 +156,26 @@ string TicTacToe::get_winner()
 	return string();
 }
 
+istream & operator>>(istream & in, TicTacToe& game)
+{
+	int marker;
+	string currentplayer = game.get_player();
+	cout << "Player " << currentplayer << " Pick a square: ";
+	in >> marker;
+	game.mark_board(marker);
 
+	return in;
+}
+
+ostream & operator<<(ostream & out, const TicTacToe & game)
+{
+	for (int i{ 0 }; i < game.pegs.size(); ++i)
+	{
+		cout << "|" << game.pegs[i];
+		if (i == 2 || i == 5 || i == 8)
+		{
+			cout << "|\n";
+		}
+	}
+	return out;
+}

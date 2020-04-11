@@ -1,10 +1,17 @@
 //h
 #include <string>
 #include <vector>
+#include <memory>
+#include <iostream>
 using std::string; using std::vector;
+using std::ostream; using std::istream;
+using std::cin; using std::cout;
+using std::unique_ptr; using std::make_unique;
+
 
 //Error class
-
+#ifndef ERROR_H
+#define ERROR_H
 class Error {
 public:
 	Error(string msg) : message{ msg } {} //constructor
@@ -12,17 +19,21 @@ public:
 private:
 	string message;
 };
+#endif
 
 //TicTacToe Class
+#ifndef TICTACTOE_H
+#define TICTACTOE_H
+
 class TicTacToe {
 public:
 	void start_game(string first_player);
 	void mark_board(int position);
 	string get_player()const { return player; }
-	void display_board()const;
 	bool game_over();
 	string get_winner();
-
+	friend istream& operator>>(istream& in, TicTacToe& game);
+	friend ostream& operator<<(ostream& out, const TicTacToe& game);
 
 private:
 	void set_next_player();
@@ -36,3 +47,5 @@ private:
 	vector<string> pegs{ " ", " ", " ", " ", " ", " ", " ", " ", " " };
 	string winner{ "P" };
 };
+
+#endif;

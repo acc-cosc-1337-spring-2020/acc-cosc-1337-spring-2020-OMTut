@@ -7,7 +7,7 @@ class BankAccount
 public:
 	BankAccount() = default;
 	explicit BankAccount(int b) : balance{ b } {} // this is a constructor EX: BankAccount(int b, double r) : balance{b}, rate {r} {}
-	virtual int get_balance()const { return balance; } //const keeps the entire function from being amended
+	virtual int get_balance()const = 0; //pure virtual function. this makes this class an abstract class (virtual function = 0)
 	void deposit(int amount);
 	void withdraw(int amount);
 	void open(int amount);
