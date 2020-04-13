@@ -3,6 +3,8 @@
 
 int main() 
 {
+	TicTacToeManager manager;
+
 	int choice{ 1 };
 	do
 	{
@@ -29,11 +31,10 @@ int main()
 			cout << game;
 		} while (game.game_over() != true);
 		cout << game.get_winner();
-		TicTacToeManager savegame;
 		//savegame.get_winner_total();
 		//savegame.get_winner_total(game.get_winner());
 		cout << "\n";
-		savegame.save_game(game);
+		manager.save_game(game);
 
 		cout << "\nPress 1 to play again."; //menu choice
 		cin >> choice;
@@ -42,7 +43,7 @@ int main()
 	
 
 	//use a try catch block to check for an Error return when user enters incorrect data.
-
+	cout << manager;
 
 	return 0;
 }
