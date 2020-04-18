@@ -8,7 +8,7 @@ void Customer::add_account(std::unique_ptr<BankAccount> & act)
 	accounts.push_back(std::move(act));
 }
 
-std::ostream& operator<<(std::ostream& out, const Customer& c); //overload ostream here? This will be a free or friend function??
+std::ostream& operator<<(std::ostream& out, const Customer& c) //overload ostream here? This will be a free or friend function??
 {
 	for (auto& account : c.accounts)
 	{

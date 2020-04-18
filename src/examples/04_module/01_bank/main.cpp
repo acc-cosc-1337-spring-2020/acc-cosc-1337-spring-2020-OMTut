@@ -5,18 +5,23 @@
 #include "atm.h"
 #include <iostream>
 #include <vector>
-#include<memory>
+#include <memory>
 
 using std::cout; using std::cin;
 using std::unique_ptr; using std::make_unique;
+using std::reference_wrapper;
 
 int main()
 
 {
 	//c++ 11
+	//declare unique pointer       create the instance with make_unique
 	unique_ptr<BankAccount> s = make_unique<SavingsAccount>(90 );
 	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
-	
+
+	std::vector<unique_ptr<BankAccount>> accounts;
+	accounts.push_back(std::move(s));
+	accounts.push_back(std::move(c));
 	Customer cust;
 	cust.add_account(s);
 	cust.add_account(c);
@@ -29,9 +34,9 @@ int main()
 
 	/*std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) };
 	*/
-	for (auto &act : accounts)
+	for (auto &account : acts)
 	{
-		cout << act->get_balance() << "\n";
+		cout << account->get_balance() << "\n";
 	}
 	
 	

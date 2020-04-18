@@ -1,49 +1,64 @@
 #include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
 
 int main() 
 {
-	TicTacToeManager manager;
+	
+	TicTacToeManager* manager = new TicTacToeManager();
 
 	int choice{ 1 };
+	int gametype{ 0 };
 	do
 	{
+		cout << "Do you want to play Tic Tac Toe 3 or Tic Tac Toe 4?\n";
+		cout << "Type 3 or 4: ";
+		cin >> gametype;
+		
+		unique_ptr<TicTacToe> game;
+
+		if (gametype == 3)
+		{ 
+			game = make_unique<TicTacToe3>(); 
+		}
+		else {
+			game = make_unique<TicTacToe4>();
+		}
+
 		//prompt user for first player
 		string player;
 		cout << "Ready Player One.\n";
+
 		do
 		{
 			cout << "Choose X or O: ";
 			cin >> player;
 		} while ((player != "X") && (player != "O"));
 
+
 		//start game
+	
+		game->start_game(player);
 
-		TicTacToe game;
-		game.start_game(player);
-
-		//In a user-controlled loop, prompt the user for a position (int type) and call the mark_board class member function. Loop continues while user opts in.
-
-			//int marker;
 		do
 		{
-			cin >> game;
-			cout << game;
-		} while (game.game_over() != true);
-		cout << game.get_winner();
-		//savegame.get_winner_total();
-		//savegame.get_winner_total(game.get_winner());
+			cin >> *game;
+			cout << *game;
+		} while (game->game_over() != true);
+
+		manager->save_game(game);
+
 		cout << "\n";
-		manager.save_game(game);
+
 
 		cout << "\nPress 1 to play again."; //menu choice
 		cin >> choice;
-		if (choice == 1) { system("cls"); }
-	} while (choice == 1);
-	
+		if (choice == 1) { system("cls"); } //system("cls"); clears the screen
 
-	//use a try catch block to check for an Error return when user enters incorrect data.
-	cout << manager;
+	} while (choice == 1);
+	cout << *manager;
+
 
 	return 0;
 }

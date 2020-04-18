@@ -1,38 +1,54 @@
 #include "tic_tac_toe_manager.h"
+#include <iostream>
+
+using std::ostream; using std::istream;
 
 //cpp
-void TicTacToeManager::save_game(TicTacToe b)
+void TicTacToeManager::save_game(unique_ptr<TicTacToe>& game)
 {
-	games.push_back(b);
-	update_winner_count(b.get_winner());
+	update_winner_count(game->get_winner());
+	games.push_back(std::move(game));
+	//games.push_back(game);
+	
+	
 }
+
+
+
 
 void TicTacToeManager::update_winner_count(string winner)
 {
+	//cout << "Update Winner Value is: " << winner;
 	if (winner == "X") { x_win++; }
 	if (winner == "O") { o_win++; }
 	if (winner == "C") { ties++; }
 }
 
-void TicTacToeManager::get_winner_total(int & o, int & x, int & t)
+void TicTacToeManager::get_winner_total(int & o, int & x, int & c)
 {
-	cout << "X Wins: " << x_win << "\n";
-	cout << "O Wins: " << o_win << "\n";
-	cout << "Ties: " << ties << "\n";
+	x = x_win;
+	o = o_win;
+	c = ties;
 
 }
 
-std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
+ostream & operator<<(ostream & out, const TicTacToeManager & manager)
 {
-	for (auto game : manager.games) 
+	
+	for (auto& game : manager.games)
 	{
 		out<<game;
+		//g.push_back(game);
+		//g = game;
+
 	}
 
-	out << "X Win Count: " << manager.x_win << "\n";
+	out << "\nX Win Count: " << manager.x_win << "\n";
 	out << "O Win Count: " << manager.o_win << "\n";
 	out << "Tie Count: " << manager.ties << "\n";
 	return out;
 }
+
+
 
 

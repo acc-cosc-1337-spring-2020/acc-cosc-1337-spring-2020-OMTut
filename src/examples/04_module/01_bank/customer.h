@@ -10,10 +10,10 @@ class Customer //tic tac toe manager class
 {
 public:
 
-	//void add_account(BankAccount& act);
+	void add_account(std::unique_ptr<BankAccount>& act);
 	//friend std::ostream& operator<<(std::ostream& out, const Customer& c);
 private:
-	//std::vector<std::unique_ptr<BankAccount>> accounts; //rewatch Tuesday's lesson. He explains.
+	std::vector<std::unique_ptr<BankAccount>> accounts; //rewatch Tuesday's lesson. He explains.
 
 };
 
