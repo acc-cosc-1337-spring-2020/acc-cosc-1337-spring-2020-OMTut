@@ -14,14 +14,12 @@ using std::unique_ptr; using std::make_unique;
 
 class TicTacToeManager {
 public:
-	void save_game(unique_ptr<TicTacToe> &game);
-	//void save_game(TicTacToe &game);
+	void save_game(TicTacToe &game);
 	void get_winner_total(int& o, int& x, int& t);
 	friend std::ostream& operator<<(std::ostream & out, const TicTacToeManager &manager);
 private:
 
-	vector<unique_ptr<TicTacToe>> games;
-	//vector<reference_wrapper<TicTacToe>> games;
+	vector<reference_wrapper<TicTacToe>> games;
 	int x_win{ 0 };
 	int o_win{ 0 };
 	int ties{ 0 };

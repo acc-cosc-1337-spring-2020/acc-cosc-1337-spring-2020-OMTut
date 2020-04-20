@@ -1,64 +1,79 @@
-#include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
+#include<iostream>
+#include<functional>
 
-int main() 
+using std::cout; using std::cin; using std::string;
+
+int main()
 {
-	
-	TicTacToeManager* manager = new TicTacToeManager();
+	TicTacToeManager manager;
+	string cont;
+	std::vector<std::reference_wrapper<TicTacToe>> games;
 
-	int choice{ 1 };
-	int gametype{ 0 };
 	do
 	{
-		cout << "Do you want to play Tic Tac Toe 3 or Tic Tac Toe 4?\n";
-		cout << "Type 3 or 4: ";
-		cin >> gametype;
-		
-		unique_ptr<TicTacToe> game;
+		int game_type;
+		cout << "\nTictactoe 3 or 4?";
+		cin >> game_type;
+		TicTacToe3 game3;
+		TicTacToe4 game4;
 
-		if (gametype == 3)
-		{ 
-			game = make_unique<TicTacToe3>(); 
+		if (game_type == 3)
+		{
+			games.push_back(game3);
 		}
-		else {
-			game = make_unique<TicTacToe4>();
+		else if (game_type == 4)
+		{
+			games.push_back(game4);
 		}
 
-		//prompt user for first player
-		string player;
-		cout << "Ready Player One.\n";
+		std::reference_wrapper<TicTacToe> game = games.back();
+
+		string player = "Y";
+
+		while (!(player == "O" || player == "X"))
+		{
+			try
+			{
+				cout << "Enter player: ";
+				cin >> player;
+
+				game.get().start_game(player);
+			}
+			catch (Error e)
+			{
+				cout << e.get_message();
+			}
+		}
+
+		int choice = 1;
 
 		do
 		{
-			cout << "Choose X or O: ";
-			cin >> player;
-		} while ((player != "X") && (player != "O"));
+			try
+			{
+				cin >> game.get();
+				cout << game.get();
+			}
+			catch (Error e)
+			{
+				cout << e.get_message();
+			}
 
+		} while (!game.get().game_over());
 
-		//start game
-	
-		game->start_game(player);
+		manager.save_game(game.get());
 
-		do
-		{
-			cin >> *game;
-			cout << *game;
-		} while (game->game_over() != true);
+		cout << "\nWinner: " << game.get().get_winner() << "\n";
 
-		manager->save_game(game);
+		cout << "Enter Y to play again: ";
+		cin >> cont;
 
-		cout << "\n";
+	} while (cont == "Y");
 
-
-		cout << "\nPress 1 to play again."; //menu choice
-		cin >> choice;
-		if (choice == 1) { system("cls"); } //system("cls"); clears the screen
-
-	} while (choice == 1);
-	cout << *manager;
-
+	cout << manager;
 
 	return 0;
 }

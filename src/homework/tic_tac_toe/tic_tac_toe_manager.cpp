@@ -4,11 +4,10 @@
 using std::ostream; using std::istream;
 
 //cpp
-void TicTacToeManager::save_game(unique_ptr<TicTacToe>& game)
+void TicTacToeManager::save_game(TicTacToe & game)
 {
-	update_winner_count(game->get_winner());
-	games.push_back(std::move(game));
-	//games.push_back(game);
+	update_winner_count(game.get_winner());
+	games.push_back(game);
 	
 	
 }
