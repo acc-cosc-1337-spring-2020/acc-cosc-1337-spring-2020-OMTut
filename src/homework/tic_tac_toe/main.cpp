@@ -1,18 +1,14 @@
 #include "tic_tac_toe_manager.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
-#include<iostream>
-#include<functional>
 
-using std::cout; using std::cin; using std::string;
 
 int main()
 {
-	//TicTacToeManager manager;
 	unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>();
 	string cont;
-	//std::vector<std::reference_wrapper<TicTacToe>> games;
-	
+
+	vector<unique_ptr<TicTacToeManager>>games;
 
 	do
 	{
@@ -23,11 +19,13 @@ int main()
 
 		if (game_type == 3)
 		{
-			game = std::make_unique<TicTacToe3>();
+			game = make_unique<TicTacToe3>();
+			move(game);
 		}
 		else if (game_type == 4)
 		{
-			game = std::make_unique <TicTacToe4>();
+			game = make_unique <TicTacToe4>();
+			move(game);
 		}
 
 		string player = "Y";
@@ -65,14 +63,14 @@ int main()
 
 		manager->save_game(game);
 
-		cout << "\nWinner: " << game->get_winner() << "\n";
+		cout << "\The Winner is: " << game->get_winner() << "\n";
 
 		cout << "Enter Y to play again: ";
 		cin >> cont;
 
 	} while (cont == "Y");
 
-	cout << *manager;
+	cout << *manager << "\n";
 
 	return 0;
 }

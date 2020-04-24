@@ -40,7 +40,6 @@ void TicTacToe::mark_board(int position)
 	{
 		throw Error("Must start game first.");
 	}
-	//else if (position < 1 || position > 9) {
 	else if (position <1 || position > pegs.size()) {
 		throw Error("Position must be 1 to 9");
 	}
@@ -88,9 +87,6 @@ bool TicTacToe::game_over()
 	bool row_win = check_row_win();
 	bool diagonal_win = check_diagonal_win();
 
-	//if (fullboard == true) { 
-	//	return true; 
-	//}
 	if (column_win == true) { 
 		set_winner();
 		return true; 
@@ -126,7 +122,6 @@ void TicTacToe::set_winner()
 string TicTacToe::get_winner()
 {
 	game_over();
-	cout << "The winner is: " << winner;
 	return winner;
 }
 

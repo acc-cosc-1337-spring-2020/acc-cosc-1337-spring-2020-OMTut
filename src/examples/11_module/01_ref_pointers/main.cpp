@@ -14,7 +14,7 @@ int main()
 	cout << "Address of ref_r: " << &ref_r << "\n\n";
 
 	int* ptr_p = &p;
-	cout << "Address of p: " << &p << "\n";
+	cout << "Address of p: " << &p << "\n"; //the & means to cout the address of p
 	cout << "Value of p: " << p << "\n";
 	cout << "Address of ptr_p: " << &ptr_p << "\n\n";
 
