@@ -8,8 +8,6 @@ int main()
 	unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>();
 	string cont;
 
-	vector<unique_ptr<TicTacToeManager>>games;
-
 	do
 	{
 		unique_ptr<TicTacToe> game;
@@ -20,12 +18,10 @@ int main()
 		if (game_type == 3)
 		{
 			game = make_unique<TicTacToe3>();
-			move(game);
 		}
 		else if (game_type == 4)
 		{
 			game = make_unique <TicTacToe4>();
-			move(game);
 		}
 
 		string player = "Y";
@@ -61,9 +57,9 @@ int main()
 
 		} while (!game->game_over());
 
-		manager->save_game(game);
-
 		cout << "\The Winner is: " << game->get_winner() << "\n";
+
+		manager->save_game(game);
 
 		cout << "Enter Y to play again: ";
 		cin >> cont;
