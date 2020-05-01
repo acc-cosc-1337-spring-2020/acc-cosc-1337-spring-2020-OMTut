@@ -125,6 +125,8 @@ string TicTacToe::get_winner()
 	return winner;
 }
 
+
+
 istream & operator>>(istream & in, TicTacToe& game)
 {
 	int marker;

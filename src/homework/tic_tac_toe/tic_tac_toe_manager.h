@@ -1,5 +1,6 @@
 //h
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_data.h"
 
 using std::string; using std::vector;
 using std::cin; using std::cout;
@@ -10,12 +11,18 @@ using std::unique_ptr; using std::make_unique;
 
 class TicTacToeManager {
 public:
+	TicTacToeManager() = default;
+	TicTacToeManager(TicTacToeData& data);
 	void save_game(unique_ptr<TicTacToe> &game);
 	void get_winner_total(int& o, int& x, int& t);
 	friend std::ostream& operator<<(std::ostream & out, const TicTacToeManager &manager);
-
+	~TicTacToeManager();
 private:
-	vector<unique_ptr<TicTacToe>>games{};
+	TicTacToeData data;
+	vector<unique_ptr<TicTacToe>>games;
+	//vector<unique_ptr<TicTacToeData>>data{};
+	
+	
 
 	int x_win{ 0 };
 	int o_win{ 0 };
@@ -24,4 +31,4 @@ private:
 
 };
 
-#endif //TICTACTOE_MANAGER
+#endif // !TICTACTOE_MANAGER

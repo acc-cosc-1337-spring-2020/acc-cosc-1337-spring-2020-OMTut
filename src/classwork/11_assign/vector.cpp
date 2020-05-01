@@ -27,6 +27,11 @@ Vector::Vector(const Vector & v)
 	}
 }
 
+void Vector::Reserve(size_t new_allocation)
+{
+
+}
+
 /*Release Dynamic memory - Deallocate memory*/
 Vector::~Vector()
 {
@@ -41,6 +46,44 @@ void use_vector()
 	Vector* v1 = new Vector(3);
 	delete v1;
 	v1 = nullptr;
+}
+
+Vector get_vector()
+{
+	Vector v(3);
+
+	return v;
+}
+/*
+Get the dynamic memory from v
+Get the size from v
+Point the v.nums to nullptr to take care of memory issue
+*/
+//////////////////////Move Constructor
+Vector::Vector(Vector && v)
+	: size{ v.size }, nums{v.nums}
+{
+	v.size = 0;
+	v.nums = nullptr;
+}
+
+/*
+Deallocate original dynamic memory
+Get the dyanmic memory and size from v
+Point v.nums to null ptr
+Set v.size to 0
+*/
+
+Vector & Vector::operator=(Vector && v)
+{
+	delete nums;
+	nums = v.nums;
+	size = v.size;
+	v.nums = nullptr;
+	v.size = 0;
+
+	return *this; //*this is a self-reference
+	// TODO: insert return statement here
 }
 
 

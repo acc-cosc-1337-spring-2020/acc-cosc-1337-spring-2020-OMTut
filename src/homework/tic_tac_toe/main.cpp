@@ -1,11 +1,17 @@
+#include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_data.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
 
 
+
 int main()
 {
-	unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>();
+	TicTacToeData data;
+	TicTacToeManager(data);//Figure out what is redefining this.
+	//unique_ptr<BankAccount> s = make_unique<SavingsAccount>(90 );
+	unique_ptr<TicTacToeManager> manager =  std::make_unique<TicTacToeManager>();
 	string cont;
 
 	do
@@ -57,7 +63,7 @@ int main()
 
 		} while (!game->game_over());
 
-		cout << "\The Winner is: " << game->get_winner() << "\n";
+		cout << "\nThe Winner is: " << game->get_winner() << "\n";
 
 		manager->save_game(game);
 
@@ -67,6 +73,8 @@ int main()
 	} while (cont == "Y");
 
 	cout << *manager << "\n";
+
+	
 
 	return 0;
 }
