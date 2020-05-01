@@ -34,18 +34,18 @@ void TicTacToeManager::get_winner_total(int & o, int & x, int & c)
 
 TicTacToeManager::~TicTacToeManager()
 {
-	data.save_pegs(games);
+	data.save_games(games);
 }
 
 
 ostream & operator<<(ostream & out, const TicTacToeManager & manager)
 {
-
+	/*
 	for (auto &game : manager.games)
 	{
 		out << &game;
 	}
-
+	*/
 	out << "\nX Win Count: " << manager.x_win << "\n";
 	out << "O Win Count: " << manager.o_win << "\n";
 	out << "Tie Count: " << manager.ties << "\n";

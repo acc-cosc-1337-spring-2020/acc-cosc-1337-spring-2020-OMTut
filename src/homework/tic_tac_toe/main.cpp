@@ -9,10 +9,14 @@
 int main()
 {
 	TicTacToeData data;
-	TicTacToeManager(data);//Figure out what is redefining this.
+	//TicTacToeManager manager = TicTacToeManager(data);
+	//TicTacToeManager(data);//Figure out what is redefining this.
 	//unique_ptr<BankAccount> s = make_unique<SavingsAccount>(90 );
 	unique_ptr<TicTacToeManager> manager =  std::make_unique<TicTacToeManager>();
+	
 	string cont;
+
+	//TicTacToeManager manager = TicTacToeManager(data);
 
 	do
 	{
@@ -74,7 +78,8 @@ int main()
 
 	cout << *manager << "\n";
 
-	
+	//TicTacToeData data;
+	//TicTacToeManager(data);
 
 	return 0;
 }

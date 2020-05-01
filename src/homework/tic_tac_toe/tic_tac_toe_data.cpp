@@ -5,7 +5,7 @@
 
 //cpp
 
-void TicTacToeData::save_pegs(const vector<unique_ptr<TicTacToe>>& games)
+void TicTacToeData::save_games(const vector<unique_ptr<TicTacToe>>& games)
 {
 	ofstream file_out(file_name, ios_base::trunc);
 
@@ -26,41 +26,44 @@ void TicTacToeData::save_pegs(const vector<unique_ptr<TicTacToe>>& games)
 
 vector<unique_ptr<TicTacToe>> TicTacToeData::get_games()
 {
-	vector<unique_ptr<TicTacToe>> boards;  //g
+	vector<unique_ptr<TicTacToe>> games;
 	ifstream read_file(file_name);
+
+	vector<string> pegs;
+	string line;
 
 	if (read_file.is_open())
 	{
-		vector<string> pegs;
-		string line;
+		//vector<string> pegs;
+		//string line;
 
 		while (getline(read_file, line))
 		{
 
-			for (int ch{ 0 }; ch < line.size() - 1; ch++)
+			for (int i{ 0 }; i < line.size() - 1; i++)
 			{
-				string chstr(1, line[ch]);
+				string chstr(1, line[i]);
 				pegs.push_back(chstr);
 			}
 
 			string winner = pegs[-1];
-			unique_ptr<TicTacToe>board;
+			unique_ptr<TicTacToe>game;
 
 			if (pegs.size() == 9)
 			{
-				board = make_unique<TicTacToe3>(pegs, winner);
+				game = make_unique<TicTacToe3>(pegs, winner);
 			}
 			else if (pegs.size() == 16)
 			{
-				board = make_unique<TicTacToe4>(pegs, winner);
+				game = make_unique<TicTacToe4>(pegs, winner);
 			}
 
-			boards.push_back(move(board));
+			games.push_back(move(game));
 		}
 		read_file.close();
 	}
 
 
 
-	return boards;
+	return games;
 }

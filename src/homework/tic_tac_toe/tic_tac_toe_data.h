@@ -6,7 +6,7 @@
 class TicTacToeData
 {
 public:
-	void save_pegs(const vector<unique_ptr<TicTacToe>>& games);
+	void save_games(const vector<unique_ptr<TicTacToe>>& games);
 	vector<unique_ptr<TicTacToe>> get_games();
 private:
 	const string file_name{ "tttgames.dat" };
