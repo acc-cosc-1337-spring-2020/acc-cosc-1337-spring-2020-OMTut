@@ -4,6 +4,7 @@
 TicTacToeManager::TicTacToeManager(TicTacToeData & data)
 {
 	games = data.get_games();
+
 	for (auto& game : games)
 	{
 		update_winner_count(game->get_winner());
@@ -40,12 +41,12 @@ TicTacToeManager::~TicTacToeManager()
 
 ostream & operator<<(ostream & out, const TicTacToeManager & manager)
 {
-	/*
+	
 	for (auto &game : manager.games)
 	{
-		out << &game;
+		out << *game << "\n";
 	}
-	*/
+	
 	out << "\nX Win Count: " << manager.x_win << "\n";
 	out << "O Win Count: " << manager.o_win << "\n";
 	out << "Tie Count: " << manager.ties << "\n";

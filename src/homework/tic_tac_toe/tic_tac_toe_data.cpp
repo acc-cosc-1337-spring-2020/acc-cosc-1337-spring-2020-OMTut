@@ -29,13 +29,13 @@ vector<unique_ptr<TicTacToe>> TicTacToeData::get_games()
 	vector<unique_ptr<TicTacToe>> games;
 	ifstream read_file(file_name);
 
-	vector<string> pegs;
-	string line;
+	//vector<string> pegs;
+	//string line;
 
 	if (read_file.is_open())
 	{
-		//vector<string> pegs;
-		//string line;
+		vector<string> pegs;
+		string line;
 
 		while (getline(read_file, line))
 		{

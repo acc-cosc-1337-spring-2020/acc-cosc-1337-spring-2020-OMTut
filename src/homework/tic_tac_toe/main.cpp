@@ -1,22 +1,20 @@
 #include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
-#include "tic_tac_toe_data.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
-
+#include "tic_tac_toe_data.h"
 
 
 int main()
 {
 	TicTacToeData data;
-	//TicTacToeManager manager = TicTacToeManager(data);
 	//TicTacToeManager(data);//Figure out what is redefining this.
-	//unique_ptr<BankAccount> s = make_unique<SavingsAccount>(90 );
+	//TicTacToeManager manager = TicTacToeManager(data);
+	
 	unique_ptr<TicTacToeManager> manager =  std::make_unique<TicTacToeManager>();
+	//manager = std::move(TicTacToeData(data));
 	
 	string cont;
-
-	//TicTacToeManager manager = TicTacToeManager(data);
 
 	do
 	{

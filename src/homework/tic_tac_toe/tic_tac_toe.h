@@ -29,6 +29,7 @@ private:
 
 class TicTacToe {
 public:
+	TicTacToe() = default;
 	TicTacToe(int s):pegs(s*s, " ") {}
 	TicTacToe(vector<string> p, string win)
 		: pegs{ p }, winner{ win }
